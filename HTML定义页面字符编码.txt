@@ -1,0 +1,2 @@
+使用<meta>信息中的http-equiv="content-type"来进行定义:
+<meta http-equiv="content-type" content="text/html;charset=UTF-8">

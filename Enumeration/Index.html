@@ -1,0 +1,44 @@
+<html>
+<head>
+	<meta name="author" content="wych">
+	<meta name="keywords" content="JS,javascript,wych,Enumerable">
+	<meta http-equiv="content-type" content="text/html;charset=UTF-8">
+<title>对象属性的枚举性</title>
+<style>
+	.suojin{
+		text-indent:2em;
+	}
+</style>
+</head>
+<body>
+<center>对象属性的枚举性(Enumerable)</center>
+<p class="suojin">
+	Javascript中遍历对象属性的方法:</p>
+<ul>
+	<li><a href="for_in.html">for-in循环</a></li>
+	<li><a href="objKeys.html">Object.keys()</a></li>
+	<li><a href="getPropNames.html">Object.getOwnPropertyNames()</a></li>
+</ul>	
+<table border="1">
+	<tr align="center">
+		<td>方法</td><td>适用范围</td><td>描述</td></tr>
+	<tr>
+		<td>for...in</td>
+		<td>数组,对象</td>
+		<td>获取可枚举的实例和原型属性名</td></tr>
+	<tr>
+		<td>Object.keys()</td>
+		<td>数组,对象</td>
+		<td>返回可枚举的实例属性名组成的数组</td></tr>
+	<tr>
+		<td>Object.getPropertyNames()</td>
+		<td>数组,对象</td>
+		<td>返回除原型属性以外的所有属性（包括不可枚举的属性）名组成的数组</td></tr>
+	<tr>
+		<td><a href="for_of.html">for...of</a></td>
+		<td>可迭代对象(Array, Map, Set, arguments等)</td>
+		<td>返回属性值</td></tr>
+</table>
+<a href="../attrOfObj.html" target="_blank">JS对象属性分类</a>
+</body>
+</html>

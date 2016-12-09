@@ -1,0 +1,35 @@
+<html>
+<head>
+	<meta name="author" content="wych">
+	<meta name="keywords" content="js,scope,example">
+	<meta http-equiv="content-type" content="text/html;charset=UTF-8">
+	<title>Javascript var scope</title>
+	<script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+</head>
+<body>
+	<center>Example of Javascript var scope</center>
+<pre>
+var a = 1;
+function test(){
+	console.log(a);
+
+	a = 2;
+}
+</pre>
+	<input type="button" name="disBtn" value="显示结果" id="disBtn">
+	<div id="disDiv">结果显示处</div>
+	<a href="index.html">返回</a>
+	<script type="text/javascript">
+		var a = 1;
+		function test(){
+			$("#disDiv").html(a);
+			a = 2;
+		}
+		$(function(){
+			$("#disBtn").click(function(){
+				test();
+			});
+		});
+	</script>
+</body>
+</html>

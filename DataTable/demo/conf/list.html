@@ -1,0 +1,114 @@
+<html>
+<head>
+	<meta name="author" content="wych">
+	<meta name="keywords" content="js,jquery,datatable,simple,demo">
+	<meta http-equiv="content-type" content="text/html;charset=UTF-8">
+	<title>DataTable可附加参数列表</title>
+	<!-- 由于访问速度问题，使用了第三方的cdn
+	<link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/1.10.12/css/jquery.dataTables.css">
+	<script type="text/javascript" charset="utf8" src="http://cdn.datatables.net/1.10.12/js/jquery.dataTables.js"></script>
+	-->
+	<link href="http://cdn.bootcss.com/datatables/1.10.13/css/jquery.dataTables.css" rel="stylesheet">
+	<script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+	<script src="http://cdn.bootcss.com/datatables/1.10.13/js/jquery.dataTables.min.js"></script>
+</head>
+<body>
+	<center>DataTable可附加参数列表</center>
+	<hr>
+	<table id="demoTab" class="display" border="1">
+		<thead>
+			<tr>
+				<td>属性名称</td><td>取值范围</td><td>说明</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>bAutoWidth</td><td>true or false, default true</td><td>是否自动计算表格各列宽度</td></tr>
+			<tr>
+				<td>bDeferRender</td><td>true or false, default false</td><td>用于渲染的一个参数</td></tr>
+			<tr>
+				<td>bFilter</td><td>true or false, default true</td><td>开关，是否启用客户端过滤功能</td></tr>
+			<tr>
+				<td>bInfo</td><td>true or false, default true</td><td>开关，是否显示表格的一些信息</td></tr>
+			<tr>
+				<td>bJQueryUI</td><td>true or false, default false</td><td>是否使用jquery ui themeroller的风格</td></tr>
+			<tr>
+				<td>bLengthChange</td><td>true or false, default true</td><td>开关，是否显示一个每页长度的选择条（需要分页器支持）</td></tr>
+			<tr>
+				<td>bPaginate</td><td>true or false, default true</td><td>开关，是否显示（使用）分页器</td></tr>
+			<tr>
+				<td>bProcessing</td><td>true or false, defualt false</td><td>开关，以指定当正在处理数据的时候，是否显示“正在处理”这个提示信息</td></tr>
+			<tr>
+				<td>bScrollInfinite</td><td>true or false, default false</td><td>开关，以指定是否无限滚动（与sScrollY配合使用），在大数据量的时候很有用。当这个标志为true的时候，分页器就默认关闭</td></tr>
+			<tr>
+				<td>bSort</td><td>true or false, default true</td><td>开关，是否让各列具有按列排序功能</td></tr>
+			<tr>
+				<td>bSortClasses</td><td>true or false, default true</td><td>开关，指定当当前列在排序时，是否增加classes 'sorting_1', 'sorting_2' and 'sorting_3'，打开后，在处理大数据时，性能有所损失</td></tr>
+			<tr>
+				<td>bStateSave</td><td>true or false, default false</td><td>开关，是否打开客户端状态记录功能。这个数据是记录在cookies中的，打开了这个记录后，即使刷新一次页面，或重新打开浏览器，之前的状态都是保存下来的</td></tr>
+			<tr>
+				<td>sScrollX</td><td>'disabled' or  '100%' 类似的字符串</td><td>是否开启水平滚动，以及指定滚动区域大小</td></tr>
+			<tr>
+				<td>sScrollY</td><td>'disabled' or '200px' 类似的字符串</td><td>是否开启垂直滚动，以及指定滚动区域大小</td>	</tr>
+			<tr>
+				<td>aaSorting</td><td>array array[int,string], 如[], [[0,'asc'], [0,'desc']]</td><td>指定按多列数据排序的依据</td></tr>
+			<tr>
+				<td>aaSortingFixed</td><td>同上</td><td>同上。唯一不同点是不能被用户的自定义配置冲突</td></tr>
+			<tr>
+				<td>aLengthMenu</td><td>default [10, 25, 50, 100]，可以为一维数组，也可为二维数组，比如：[[10, 25, 50, -1], [10, 25, 50, "All"]]</td>
+				<td>这个为选择每页的条目数，当使用一个二维数组时，二维层面只能有两个元素，第一个为显示每页条目数的选项，第二个是关于这些选项的解释</td></tr>
+			<tr>
+				<td>aoSearchCols</td><td>default null, 类似：[null, {"sSearch": "My filter"}, null,{"sSearch": "^[0-9]", "bEscapeRegex": false}]</td><td>给每个列单独定义其初始化搜索列表特性（这一块还没搞懂）</td></tr>
+			<tr>
+				<td>asStripClasses</td><td>default ['odd', 'even'], 比如['strip1', 'strip2', 'strip3']</td><td>指定要被应用到各行的class风格，会自动循环</td></tr>
+			<tr>
+				<td>bDestroy</td><td>true or false, default false</td><td>用于当要在同一个元素上执行新的dataTable绑定时，将之前的那个数据对象清除掉，换以新的对象设置</td></tr>
+			<tr>
+				<td>bRetrieve</td><td>true or false, default false</td><td>用于指明当执行dataTable绑定时，是否返回DataTable对象</td></tr>
+			<tr>
+				<td>bScrollCollapse</td><td>true or false, default false</td><td>指定适当的时候缩起滚动视图</td></tr>
+			<tr>
+				<td>bSortCellsTop</td><td>true or false, default false</td><td>（未知的东东）</td></tr>
+			<tr>
+				<td>iCookieDuration</td><td>整数，默认7200，单位为秒</td><td>指定用于存储客户端信息到cookie中的时间长度，超过这个时间后，自动过期</td></tr>
+			<tr>
+				<td>iDeferLoading</td><td>整数，默认为null</td><td>延迟加载，它的参数为要加载条目的数目，通常与bServerSide，sAjaxSource等配合使用</td></tr>
+			<tr>
+				<td>iDisplayLength</td><td>整数，默认为10</td><td>用于指定一屏显示的条数，需开启分页器</td></tr>
+			<tr>
+				<td>iDisplayStart</td><td>整数，默认为0</td><td>用于指定从哪一条数据开始显示到表格中去</td></tr>
+			<tr>
+				<td>iScrollLoadGap</td><td>整数，默认为100</td><td>用于指定当DataTable设置为滚动时，最多可以一屏显示多少条数据</td></tr>
+			<tr>
+				<td>oSearch</td><td>默认{ "sSearch": "", "bRegex": false, "bSmart": true }</td><td>又是初始时指定搜索参数相关的，有点复杂，没搞懂目前</td></tr>
+			<tr>
+				<td>sAjaxDataProp</td><td>字符串，default 'aaData'</td><td>指定当从服务端获取表格数据时，数据项使用的名字</td></tr>
+			<tr>
+				<td>sAjaxSource</td><td>URL字符串，default null</td><td>指定要从哪个URL获取数据</td></tr>
+			<tr>
+				<td>sCookiePrefix</td><td>字符串，default 'SpryMedia_DataTables_'</td><td>当打开状态存储特性后，用于指定存储在cookies中的字符串的前缀名字</td></tr>
+			<tr>
+				<td>sDom</td><td>default lfrtip (when bJQueryUI is false) or <"H"lfr>t<"F"ip> (when bJQueryUI is true)</td><td>这是用于定义DataTable布局的一个强大的属性，另开专门文档来补充说明吧</td></tr>
+			<tr>
+				<td>sPaginationType</td><td>'full_numbers' or 'two_button', default 'two_button'</td><td>用于指定分页器风格</td></tr>
+			<tr>
+				<td>sScrollXInner</td><td>string default 'disabled'</td><td>又是水平滚动相关的，没搞懂啥意思</td></tr>
+		</tbody>
+	</table>
+	<a href="javascript:history.back()">返回</a>
+	<script type="text/javascript">
+		$(function(){
+			$("#demoTab").DataTable(
+				{
+					bLengthChange:true,
+					bFilter:true,
+					bSort:false,
+					bInfo:true,
+					bAutoWidth:true,
+					bPaginate:true
+				}
+			);				
+		});
+	</script>
+</body>
+</html>

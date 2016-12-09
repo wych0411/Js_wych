@@ -1,0 +1,147 @@
+<html>
+<head>
+	<meta name="author" content="wych">
+	<meta name="keywords" content="js,jquery,datatable,simple,demo">
+	<meta http-equiv="content-type" content="text/html;charset=UTF-8">
+	<title>DataTable简单例子</title>
+	<!-- 由于访问速度问题，使用了第三方的cdn
+	<link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/1.10.12/css/jquery.dataTables.css">
+	<script type="text/javascript" charset="utf8" src="http://cdn.datatables.net/1.10.12/js/jquery.dataTables.js"></script>
+	-->
+	<link href="http://cdn.bootcss.com/datatables/1.10.13/css/jquery.dataTables.css" rel="stylesheet">
+	<script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+	<script src="http://cdn.bootcss.com/datatables/1.10.13/js/jquery.dataTables.min.js"></script>
+</head>
+<body>
+	<center>Basic Configuration Items of DataTable</center>
+	<hr>
+	<table id="demoTab" class="display" border="1">
+		<caption align="top">非默认配置显示</caption>
+		<thead>
+			<tr>
+				<td>配置项</td>
+				<td>取值</td>
+				<td>默认取值</td>
+				<td>说明</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>bLengthChange</td>
+				<td>true|false</td>
+				<td>true</td>
+				<td>是否增加'改变每页显示数据数量'功能</td>
+			</tr>
+			<tr>
+				<td>bFilter</td>
+				<td>true|false</td>
+				<td>true</td>
+				<td>是否增加'过滤'功能</td>
+			</tr>
+			<tr>
+				<td>bSort</td>
+				<td>true|false</td>
+				<td>false</td>
+				<td>是否增加'排序'功能</td>
+			</tr>
+			<tr>
+				<td>bInfo</td>
+				<td>true|false</td>
+				<td>true</td>
+				<td>是否显示页脚信息</td>
+			</tr>
+			<tr>
+				<td>bAutoWidth</td>
+				<td>true|false</td>
+				<td>true</td>
+				<td>是否自动调整宽度</td>
+			</tr>
+			<tr>
+				<td>bPaginate</td>
+				<td>true|false</td>
+				<td>true</td>
+				<td>是否增加'翻页'功能</td>
+			</tr>
+		</tbody>
+	</table>
+	<hr>
+	<table id="demoReverseTab" class="display" border="1">
+		<caption align="top">默认配置显示</caption>
+		<thead>
+			<tr>
+				<td>配置项</td>
+				<td>取值</td>
+				<td>默认取值</td>
+				<td>说明</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>bLengthChange</td>
+				<td>true|false</td>
+				<td>true</td>
+				<td>是否增加'改变每页显示数据数量'功能</td>
+			</tr>
+			<tr>
+				<td>bFilter</td>
+				<td>true|false</td>
+				<td>true</td>
+				<td>是否增加'过滤'功能</td>
+			</tr>
+			<tr>
+				<td>bSort</td>
+				<td>true|false</td>
+				<td>false</td>
+				<td>是否增加'排序'功能</td>
+			</tr>
+			<tr>
+				<td>bInfo</td>
+				<td>true|false</td>
+				<td>true</td>
+				<td>是否显示页脚信息</td>
+			</tr>
+			<tr>
+				<td>bAutoWidth</td>
+				<td>true|false</td>
+				<td>true</td>
+				<td>是否自动调整宽度</td>
+			</tr>
+			<tr>
+				<td>bPaginate</td>
+				<td>true|false</td>
+				<td>true</td>
+				<td>是否增加'翻页'功能</td>
+			</tr>
+		</tbody>
+	</table>
+	<p>
+		一般情况下，DataTable只在第一次初始化的情况下允许指定配置选项，如果多次指定，则会抛错'Cannot reinitialise DataTable'。
+	</p>
+	<a href="javascript:history.back()">返回</a>
+	<script type="text/javascript">
+		$(function(){
+			$("#demoTab").DataTable(
+				{
+					bLengthChange:false,
+					bFilter:false,
+					bSort:true,
+					bInfo:false,
+					bAutoWidth:false,
+					bPaginate:false
+				}
+			);
+
+			$("#demoReverseTab").DataTable(
+				{
+					bLengthChange:true,
+					bFilter:true,
+					bSort:false,
+					bInfo:true,
+					bAutoWidth:true,
+					bPaginate:true
+				}
+			);				
+		});
+	</script>
+</body>
+</html>

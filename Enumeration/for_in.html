@@ -1,0 +1,42 @@
+<html>
+<head>
+	<meta name="author" content="wych">
+	<meta name="keywords" content="for,in">
+	<meta http-equiv="content-type" content="text/html;charset=UTF-8">
+	<title>for-in循环</title>
+	<style type="text/css">
+	.suojin{
+		text-indent: 2em;
+	}
+	</style>
+</head>
+<body>
+<center>for-in循环</center>
+<p class="suojin">
+	for-in主要用于遍历对象的属性。</p>
+<p class="suojin">
+	for-in遍历对象返回的是所有能够通过对象访问的、可枚举的属性，既包括存在于实例中的属性，也包括存在于原型中的实例。</p>
+<p><sub>【<font color="#A0F0F0">for-in返回的属性因各个浏览器厂商遵循的标准不一致导致对象属性遍历的顺序有可能不是当初构建时的顺序</font>。】</sub></p>
+<hr>
+<p class="suojin">
+	for-in循环也可以用来遍历数组元素。但是在使用的时候有些事项需要特别注意。</p>
+<ol>
+	<li>如果扩展了原生的Array，那么扩展的属性会被for..in输出</li>
+	<p>
+		简单扩展的Array属性默认的enumerable特征为true</p>
+	<p><sub>【<font color="#A0F0F0"> 可以通过Object.getOwnPropertyDescriptor(ObjectPrototype, propertyName)方法判断一个属性有何特征</font>。】</sub></p>
+	<p><sub>【<font color="#A0F0F0"> 可以通过对象原型的propertyIsEnumberable(propertyName)方法判断一个属性是否具有enumerable特征</font>。】</sub></p>
+	<p>
+		如果想让数组扩展的属性不被枚举，那么可以使用ES5的 Object.defineProperty() 来定义属性，此外如果浏览器版本不支持ES5的话，我们可以使用 Object.prototype.hasOwnProperty() 方法在for..in代码块内将可枚举的属性过滤掉</p>
+	<li>for..in和for遍历数组时下标类型不一样</li>
+	<p>
+		for...in循环中的下标为string类型, 原因是数组需要通过此下标以对象属性(Object['property'])的方式获取数组元素。</p>
+	<li>对于不存在的数组项的处理差异</li>
+	<p>
+		对于数组来讲，我们知道如果将其 length 属性设置为大于数组项数的值，则新增的每一项都会取得 undefined 值。使用for..in遍历数组的结果，我们发现对于不存在的项是不会被枚举出来的。</p>
+	<p><sub>【<font color="#A0F0F0">我们可以使用 in 操作符来判断某个key值(数组中的索引)是否存在对应的元素</font>。】</sub></p>
+</ol>
+<hr>
+<a href="Index.html">返回</a>
+</body>
+</html>

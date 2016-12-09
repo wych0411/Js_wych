@@ -1,0 +1,45 @@
+<html>
+<head>
+	<meta name="author" content="wych">
+	<meta name="keywords" content="js,jquery,datatable,simple,demo">
+	<meta http-equiv="content-type" content="text/html;charset=UTF-8">
+	<title>DataTable简单例子</title>
+	<!-- 由于访问速度问题，使用了第三方的cdn
+	<link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/1.10.12/css/jquery.dataTables.css">
+	<script type="text/javascript" charset="utf8" src="http://cdn.datatables.net/1.10.12/js/jquery.dataTables.js"></script>
+	-->
+	<link href="http://cdn.bootcss.com/datatables/1.10.13/css/jquery.dataTables.css" rel="stylesheet">
+	<script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+	<script src="http://cdn.bootcss.com/datatables/1.10.13/js/jquery.dataTables.min.js"></script>
+</head>
+<body>
+	<center>Simple Demo of DataTable</center>
+	<table id="demoTab" class="display">
+		<thead>
+			<tr>
+				<td>Column 1</td>
+				<td>Column 2</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Row 1 Data 1</td>
+				<td>Row 1 Data 2</td>
+			</tr>
+			<tr>
+				<td>Row 2 Data 1</td>
+				<td>Row 2 Data 2</td>
+			</tr>
+		</tbody>
+	</table>
+	<p>
+		在你的项目中使用DataTables, 只需要引入三个文件即可：jQuery库、一个DT的核心js文件和一个DT的css文件。
+	</p>
+	<a href="javascript:history.back()">返回</a>
+	<script type="text/javascript">
+		$(function(){
+			$("#demoTab").DataTable();
+		});
+	</script>
+</body>
+</html>
