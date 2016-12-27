@@ -1,0 +1,60 @@
+<html>
+<head>
+	<meta name="author" content="wych">
+	<meta name="keywords" content="datatable,reload,datasource,javascript">
+	<meta http-equiv="content-type" content="text/html;charset=UTF-8">
+	<title>DataTable reload javascript datasource</title>
+	<link href="http://cdn.bootcss.com/datatables/1.10.13/css/jquery.dataTables.css" rel="stylesheet">
+	<script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+	<script src="http://cdn.bootcss.com/datatables/1.10.13/js/jquery.dataTables.min.js"></script>
+</head>
+<body>
+	<center>DataTable reload javascript datasource</center>
+	<table id="demoTab">
+	</table>
+	<input type="button" id="changeBtn" value="change Array">
+	<a href="javascript:history.back();">返回</a>
+	<script type="text/javascript">
+		var tabContent = [{"name":"wych","id":1}];
+		var tabArr = [
+			["wych","1"]
+		];
+		$(function(){
+		    fillTab = function(data){
+		    	var tab = $("#demoTab").DataTable({
+					bDestroy:true,
+					data:data,
+					columns:[
+						{data:"name"},
+						{data:"id"}
+					]
+				});
+				$('#demoTab tbody').on( 'click', 'tr', function () {
+			        if ( $(this).hasClass('selected') ) {
+			            $(this).removeClass('selected');
+			        }
+			        else {
+			            tab.$('tr.selected').removeClass('selected');
+			            $(this).addClass('selected');
+
+			            console.log(tab.row(this).data()['name']);
+			        }
+			    } );
+		    }
+
+			console.log("begin");
+			console.log(tabContent);
+			fillTab(tabContent);			
+
+			$("#changeBtn").click(function(){
+				tabArr = [
+					["wxh","2"],
+					["wych","3"]
+				];
+				tabContent = [{"name":"wych","id":2},{"name":"wxh","id":1}];
+				fillTab(tabContent);
+			});
+		});
+	</script>
+</body>
+</html>
