@@ -15,13 +15,34 @@
 	<input type="button" id="changeBtn" value="change Array">
 	<a href="javascript:history.back();">返回</a>
 	<script type="text/javascript">
-		var tabContent = [{"name":"wych","id":1}];
+		var tabContent = [{"name":"wych","id":1,"bTrue":false}];
 		var tabArr = [
 			["wych","1"]
 		];
+
 		$(function(){
+			var tab = $("#demoTab").DataTable({
+				bDestroy:true,
+				data:{},
+				columns:[
+					{data:"name"},
+					{data:"id"}
+				]
+			});
+			$('#demoTab tbody').on( 'click', 'tr', function () {
+		        if ( $(this).hasClass('selected') ) {
+		            $(this).removeClass('selected');
+		        }
+		        else {
+		            tab.$('tr.selected').removeClass('selected');
+		            $(this).addClass('selected');
+
+		            console.log(tab.row(this).data()['bTrue']);
+		        }
+		    } );
+
 		    fillTab = function(data){
-		    	var tab = $("#demoTab").DataTable({
+		    	tab = $("#demoTab").DataTable({
 					bDestroy:true,
 					data:data,
 					columns:[
@@ -29,29 +50,18 @@
 						{data:"id"}
 					]
 				});
-				$('#demoTab tbody').on( 'click', 'tr', function () {
-			        if ( $(this).hasClass('selected') ) {
-			            $(this).removeClass('selected');
-			        }
-			        else {
-			            tab.$('tr.selected').removeClass('selected');
-			            $(this).addClass('selected');
-
-			            console.log(tab.row(this).data()['name']);
-			        }
-			    } );
 		    }
 
 			console.log("begin");
 			console.log(tabContent);
-			fillTab(tabContent);			
+			//fillTab(tabContent);			
 
 			$("#changeBtn").click(function(){
 				tabArr = [
 					["wxh","2"],
 					["wych","3"]
 				];
-				tabContent = [{"name":"wych","id":2},{"name":"wxh","id":1}];
+				tabContent = [{"name":"wych","id":2, "bTrue":true},{"name":"wxh","id":1,"bTrue":false}];
 				fillTab(tabContent);
 			});
 		});
